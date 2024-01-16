@@ -3,6 +3,7 @@ data/
 parameters.m
 config.m
 res/
+temp.m
 
 # Windows default autosave extension
 *.asv
