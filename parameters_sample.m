@@ -1,17 +1,14 @@
-% 01:Qs
-% 02:QsperM
-% 03:mm
-% 04:depth
-% 05:vw
-% 06:qs
-% 07:ips10,08:ips9, 09:ips8, 10:ips7, 11:ips6,
-% 12:ips5, 13:ips4, 14:ips3, 15:ips2, 16:ips1
+% 01:date
+% 02:Qs m^2/s
+% 03:Ds mm
+% 04:ips10,05:ips9, 06:ips8, 07:ips7, 08:ips6,
+% 09:ips5, 10:ips4, 11:ips3, 12:ips2, 13:ips1
 
 Param = struct();
 Param.isprediction = false;
-Param.dataPath = 'data/processed/C.mat';
-Param.yindex = 1; % 1:Qs, 3:Ds
-Param.Xindex = [7:16];
+Param.dataPath = 'data/processed/hodakaExpSiteConcat.mat';
+Param.yindex = 2; % 2:Qs, 3:Ds
+Param.Xindex = [4:13];
 
 Param.D = length(Param.Xindex);
 
