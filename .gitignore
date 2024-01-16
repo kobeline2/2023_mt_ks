@@ -2,7 +2,7 @@
 data/
 parameters.m
 config.m
-results/
+res/
 
 # Windows default autosave extension
 *.asv
