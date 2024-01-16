@@ -1,6 +1,7 @@
 # specific for this project
 data/
 parameters.m
+config.m
 results/
 
 # Windows default autosave extension
