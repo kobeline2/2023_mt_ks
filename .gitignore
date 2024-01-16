@@ -1,7 +1,9 @@
 # specific for this project
 data/
 parameters.m
-results/
+config.m
+res/
+temp.m
 
 # Windows default autosave extension
 *.asv
