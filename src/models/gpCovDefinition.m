@@ -12,11 +12,21 @@ v = @() randn();
 %            l(), l(), l(), l(), l(), l(), l(), l(), l(), l(), l(), l()];
 
 % % 2
-covfunc = {@covProd, {@covLINiso, @covSEiso}};
-hyp.cov = [l(), l(), l()];
+% covfunc = {@covProd, {@covLINiso, @covSEiso}};
+% hyp.cov = [l(), l(), l()];
 
-% 3
+% % 3
 % covfunc = {@covProd, {@covLINiso, @covSEard}};
 % hyp.cov = randn(1, Param.D+2);
+
+% 4
+covfunc = {@covProd, {{@covProd, {@covLINiso, @covLINiso}}, @covSEard}};
+hyp.cov = randn(1, Param.D+3);
+
+% % 5
+% cov = {@covProd, {@covLINiso, @covSEard}};
+% covfunc = {@covProd, {cov, @covLINiso}};
+% hyp.cov = randn(1, Param.D+3);
+
 
 end

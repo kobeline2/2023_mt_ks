@@ -9,10 +9,10 @@ if size(ymean, 2) == 2
     ymean   = ymean * ParamNorm.sy + ParamNorm.cy;
     yactual = Data.ytest * ParamNorm.sy + ParamNorm.cy;
     if Param.logy
-        yupper  = exp(yupper);
-        ylower  = exp(ylower);
-        ymean   = exp(ymean);
-        yactual = exp(yactual);
+        yupper  = exp(yupper)*Param.coefLog;
+        ylower  = exp(ylower)*Param.coefLog;
+        ymean   = exp(ymean)*Param.coefLog;
+        yactual = exp(yactual)*Param.coefLog;
     end
     
     z = 1:length(ymean);
