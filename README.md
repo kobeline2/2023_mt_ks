@@ -10,7 +10,10 @@
 
 This project depends on the following libraries and tools:
 
-- **GPML**: GPML toolbox. You can download from https://github.com/alshedivat/gpml.
+- **GPML**: GPML toolbox 
+
+You can download from https://github.com/alshedivat/gpml.
+
 tutorial: http://gaussianprocess.org/gpml/code/matlab/doc/
 
 ## `.gitignore`で除外されている重要なファイル/ディレクトリ
@@ -38,5 +41,46 @@ tutorial: http://gaussianprocess.org/gpml/code/matlab/doc/
 - **理由**: このファイルには環境固有の設定や機密情報が含まれており, Gitリポジトリでの追跡から除外されています. 
 - **セットアップ**: 新しい開発者は, `parameter_example.m`（プロジェクト内にあるサンプルファイル）をコピーして`parameter.m`という名前で同じディレクトリに保存し, 自分の環境に合わせて内容を編集する必要があります.このファイルはプ
 ロジェクトのルートディレクトリに置く必要があります.
+
+## 基本的な使いかた
+1. 初期化.
+```run init.m```
+
+2. パラメタを設定する.
+```edit parameter.m```
+
+3. main.mを実行する.
+```run main.m```
+
+## ハイパーパラメータの学習
+#TODO
+
+## 予測の実行
+1. 予測したいデータをdataディレクトリに入れる. 予測したいデータはmat形式で保存する. 
+`ipsdataExcel2mat.m`関数を用いて, エクセルデータをmat形式に変換することができる. 
+
+例えば, `data/raw/2023_mt_ks_1.xlsx`を`data/raw/2023_mt_ks_1.mat`に変換する場合, 
+
+```ispsdataExcel2mat('data/raw/2023_mt_ks_1.xlsx', 'data/raw/2023_mt_ks_1.mat')```
+
+とする. このとき, エクセルデータのカラムは以下のようになっている必要がある .  
+|                 | パルス数 /s  |          |          |          |          |          |      |          |          |
+| --------------- | -------- | -------- | -------- | -------- | -------- | -------- | ---- | -------- | -------- |
+|                 | 1024倍    | 512倍     | 256倍     | 128倍     | 64倍      | 32倍      | 16倍  | 8倍       | 4倍       | 2倍 |
+|                 | Avg      | Avg      | Avg      | Avg      | Avg      | Avg      | Avg  | Avg      | Avg      | Avg |
+| 2016/06/25 1:01 | 5.566667 | 3        | 1.45     | 0.516667 | 0.216667 | 0.083333 | 0.05 | 0.033333 | 0.016667 | 0.016667 |
+| 2016/06/25 1:02 | 6.783333 | 3.766667 | 2.016667 | 1.133333 | 0.566667 | 0.266667 | 0.1  | 0.05     | 0.033333 | 0.033333 |
+
+2. パラメタに（必用最低）以下を設定. 
+- `Param.isprediction = true`; 
+- `Param.hyp = 'res_public/h.mat`';
+- `Param.predictData = 'data/processed/C.mat'`; % 上記で作成したmatファイル
+- `Param.ParamNorm = 'res_public/ParamNorm.mat'`;
+- `Param.outputExcel = true`; % エクセルファイルに出力するかどうか
+- `Param.outputExcelPath  = 'res/prediction/C.xlsx'`; % 出力先のパス
+
+3. main.mを実行する.
+```run main.m```
+
 
 
