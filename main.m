@@ -1,8 +1,8 @@
 % main.m - main code of the project
 clear; clc;
 run('parameters.m');
-load(Param.Data);
 if Param.isprediction % prediction
+    load(Param.Data);
     DataPred = load(Param.predictData);
     load(Param.hyp);
     load(Param.ParamNorm);
@@ -10,6 +10,7 @@ if Param.isprediction % prediction
     [DataPred, ParamNorm] = normalizeData(DataPred, Param, ParamNorm);
     ypred = feval(Param.modelfit, Data, Param, h, DataPred.X);
 else % Learning
+    Data = load(Param.Data);
     Data = preprocessData(Data, Param);
     Data = makeTrainTestData(Data, Param);
     [Data, ParamNorm] = normalizeData(Data, Param); 
